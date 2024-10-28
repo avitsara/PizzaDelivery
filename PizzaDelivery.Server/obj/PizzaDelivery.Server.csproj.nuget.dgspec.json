@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\LoginSystemApp\\PizzaDelivery\\PizzaDelivery.Server\\PizzaDelivery.Server.csproj": {}
+    "E:\\PizzaDelivery\\PizzaDelivery.Server\\PizzaDelivery.Server.csproj": {}
   },
   "projects": {
-    "E:\\LoginSystemApp\\PizzaDelivery\\PizzaDelivery.Server\\PizzaDelivery.Server.csproj": {
+    "E:\\PizzaDelivery\\PizzaDelivery.Server\\PizzaDelivery.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\LoginSystemApp\\PizzaDelivery\\PizzaDelivery.Server\\PizzaDelivery.Server.csproj",
+        "projectUniqueName": "E:\\PizzaDelivery\\PizzaDelivery.Server\\PizzaDelivery.Server.csproj",
         "projectName": "PizzaDelivery.Server",
-        "projectPath": "E:\\LoginSystemApp\\PizzaDelivery\\PizzaDelivery.Server\\PizzaDelivery.Server.csproj",
+        "projectPath": "E:\\PizzaDelivery\\PizzaDelivery.Server\\PizzaDelivery.Server.csproj",
         "packagesPath": "C:\\Users\\jary\\.nuget\\packages\\",
-        "outputPath": "E:\\LoginSystemApp\\PizzaDelivery\\PizzaDelivery.Server\\obj\\",
+        "outputPath": "E:\\PizzaDelivery\\PizzaDelivery.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,9 +50,25 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.AspNetCore.SpaProxy": {
               "target": "Package",
               "version": "[8.*-*, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.10, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
