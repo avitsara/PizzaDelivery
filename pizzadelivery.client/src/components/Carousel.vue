@@ -6,7 +6,6 @@
       <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-      <!-- Slide 1 -->
       <div class="carousel-item slide-1 active">
         <div class="carousel-content">
           <img src="../assets/images/bg_1.png" class="pizza-image" alt="Pizza">
@@ -19,7 +18,6 @@
           </div>
         </div>
       </div>
-      <!-- Slide 2 -->
       <div class="carousel-item slide-2">
         <div class="carousel-content">
           <img src="../assets/images/bg_2.png" class="pizza-image" alt="Pizza Slice">
@@ -32,7 +30,6 @@
           </div>
         </div>
       </div>
-      <!-- Slide 3 -->
       <div class="carousel-item slide-3">
         <div class="carousel-content">
           <h4>Welcome</h4>
@@ -49,9 +46,9 @@
 </template>
 
 <script>
-export default {
-  name: 'Carousel',
-};
+  export default {
+    name: 'Carousel',
+  };
 </script>
 
 <style scoped>
@@ -66,6 +63,22 @@ export default {
     text-align: center;
   }
 
+  .carousel-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .slide-1 .pizza-image, .slide-2 .pizza-image {
+    width: 300px;
+    height: auto;
+  }
+
   .slide-1 {
     background-image: url('../assets/images/bg_1.jpg');
   }
@@ -76,10 +89,6 @@ export default {
 
   .slide-3 {
     background-image: url('../assets/images/bg_3.jpg');
-  }
-
-  .carousel-content {
-    max-width: 600px;
   }
 
   .carousel-item h1 {
