@@ -10,8 +10,8 @@
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+          <li class="nav-item active"> <router-link to="/menu" class="nav-link">Menu</router-link></li>
+<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
           <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -38,8 +38,8 @@
     name: 'Navbar',
     setup() {
       const user = ref({
-        name: '', // Initialize with empty string
-        avatar: 'https://i.pravatar.cc/300' // Random avatar image from the web
+        name: '', 
+        avatar: 'https://i.pravatar.cc/300' 
       });
 
       const fetchUsername = () => {
@@ -51,13 +51,9 @@
 
       const logout = async () => {
         try {
-          // Perform logout logic, e.g., invalidate JWT token
-          await axios.post('/api/logout'); // Adjust to your API endpoint
-          // Remove JWT token from local storage
+          await axios.post('/api/logout'); 
           localStorage.removeItem('token');
-          // Remove username from local storage
           localStorage.removeItem('username');
-          // Redirect to login page
           window.location.href = '/login';
         } catch (error) {
           console.error('Logout failed', error);
