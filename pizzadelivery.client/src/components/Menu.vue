@@ -10,8 +10,8 @@
       There was an error loading the pizzas: {{ error }}
     </div>
 
-    <div v-else>
-      <div v-for="pizza in pizzas" :key="pizza.name" class="pizza-item">
+    <div v-else class="pizza-grid">
+      <div v-for="pizza in pizzas" :key="pizza.name" class="pizza-card">
         <img :src="pizza.image_url" :alt="pizza.name" class="pizza-image" />
 
         <div class="pizza-details">
@@ -20,6 +20,7 @@
           <p><strong>Price:</strong> ${{ pizza.price }}</p>
           <p><strong>Category:</strong> {{ pizza.category }}</p>
           <p><strong>Size:</strong> {{ pizza.size }}</p>
+          <button class="order-button">Order Now</button>
         </div>
       </div>
     </div>
@@ -27,7 +28,6 @@
 
   <Footer />
 </template>
-
 <script>
   import axios from "axios";
   import Navbar from './Navbar.vue';
@@ -68,38 +68,50 @@
 <style scoped>
   .menu {
     text-align: center;
-    padding: 20px;
   }
 
-  .pizza-item {
+  .pizza-grid {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
-    margin: 20px 0;
-    padding: 10px;
+  }
+
+  .pizza-card {
+    width: 300px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
   }
 
+    .pizza-card:hover {
+      transform: translateY(-5px);
+    }
+
   .pizza-image {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
-    margin-right: 20px;
   }
 
   .pizza-details {
-    text-align: left;
-    max-width: 400px;
+    padding: 16px;
   }
 
-  .loading {
-    font-size: 1.5em;
-    color: #777;
+  .order-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
 
-  .error {
-    color: red;
-    font-size: 1.2em;
-  }
+    .order-button:hover {
+      background-color: #ff4500;
+    }
 </style>

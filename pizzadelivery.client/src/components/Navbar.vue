@@ -9,15 +9,22 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item active"> <router-link to="/menu" class="nav-link">Menu</router-link></li>
-<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+          <li class="nav-item active"><router-link to="/home" class="nav-link">Home</router-link></li>
+          <li class="nav-item active"><router-link to="/menu" class="nav-link">Menu</router-link></li>
+          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
           <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link">
+              <img :src="user.basket" class="icon-color" alt="User basket" width="30" height="30">
+            </a>
+          </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img :src="user.avatar" class="rounded-circle" alt="User Avatar" width="30" height="30">
+              <img :src="user.avatar" class="icon-color" alt="User Avatar" width="30" height="30">
               {{ user.name }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -32,14 +39,14 @@
 
 <script>
   import { ref, onMounted } from 'vue';
-  import axios from 'axios';
 
   export default {
     name: 'Navbar',
     setup() {
       const user = ref({
-        name: '', 
-        avatar: 'https://i.pravatar.cc/300' 
+        name: '',
+        avatar: '/src/assets/images/avatar.png',
+        basket: '/src/assets/images/basket.png'
       });
 
       const fetchUsername = () => {
@@ -49,15 +56,11 @@
         }
       };
 
-      const logout = async () => {
-        try {
-          await axios.post('/api/logout'); 
-          localStorage.removeItem('token');
-          localStorage.removeItem('username');
-          window.location.href = '/login';
-        } catch (error) {
-          console.error('Logout failed', error);
-        }
+      const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+
+        window.location.href = '/login';
       };
 
       onMounted(fetchUsername);
@@ -77,5 +80,9 @@
 
   .nav-item.dropdown .nav-link img {
     margin-right: 0.5rem;
+  }
+
+  .icon-color {
+    filter: invert(59%) sepia(66%) saturate(742%) hue-rotate(325deg) brightness(102%) contrast(101%);
   }
 </style>
