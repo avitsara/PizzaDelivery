@@ -51,22 +51,29 @@ namespace PizzaDelivery.Server.Controller
             {
                 Message = "Login successful",
                 Token = token,
-                Username = user.user_name,
-                user_id = user.user_id
-
+                User = new
+                {
+                    Username = user.user_name,
+                    user_id = user.user_id
+                }
             });
         }
 
 
         private string GenerateJwtToken(User user)
         {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSuperSecretKeyThatIsAtLeast32BytesLong"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("fq/L/r3qRdfA6mzOOflrwmSjo2+7ChpkTcom6NaQYn8="));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.email),
+                new Claim("user_id", user.user_id.ToString())
+            };
 
             var token = new JwtSecurityToken(
-                issuer: "yourIssuer",
-                audience: "yourAudience",
+                issuer: "PizzaDeliveryAPI",
+                audience: "PizzaDeliveryWebApp",
                 claims: new[] { new Claim(JwtRegisteredClaimNames.Sub, user.email) },
                 expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: creds

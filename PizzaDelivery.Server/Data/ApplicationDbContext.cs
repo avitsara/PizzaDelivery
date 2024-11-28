@@ -8,7 +8,8 @@ namespace PizzaDelivery.Server.Data
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Pizza> Pizzas { get; set; }
-
+        public DbSet<Order_Items> Order_Items { get; set; }
+        public DbSet<Orders> Orders { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         { }
@@ -17,6 +18,11 @@ namespace PizzaDelivery.Server.Data
         {
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Pizza>().ToTable("Pizza");
+            modelBuilder.Entity<Order_Items>().ToTable("Order_Items");
+            modelBuilder.Entity<Orders>().ToTable("Orders");
+
+            modelBuilder.Entity<Orders>().HasMany(o => o.items).WithOne().HasForeignKey(oi => oi.order_id);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
